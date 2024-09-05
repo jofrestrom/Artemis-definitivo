@@ -1,0 +1,7 @@
+{
+  "name": "Artemis-definitivo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
