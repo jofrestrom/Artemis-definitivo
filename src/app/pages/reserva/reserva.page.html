@@ -12,8 +12,58 @@
       <ion-col size="2"></ion-col>
 
       <ion-col size="8">
-        <ion-img src="https://www2.udec.cl/~joseparra/2.png"
-        alt="Proximamente"></ion-img>
+        <ion-text color="primary">
+          <h1>Artemis Reservas</h1>
+        </ion-text>
+
+        <!--diseño de reservas 0.1 -->
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Recorridos</ion-card-title>
+            <ion-card-subtitle>Coches disponibles</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img alt="Silhouette of mountains" src="https://billiken.lat/wp-content/uploads/2022/02/colectivo-1024x795.jpeg" />
+                </ion-thumbnail>
+                <ion-label>Para casas viejas</ion-label>
+                <ion-label>3 acientos disponibles</ion-label>
+                <ion-button>reservar</ion-button>
+              </ion-item>
+        
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img alt="Silhouette of mountains" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjPIAssK5VKmyLVg0DqXOzcgquRSeRmrbeV-V_e8MezKttdbZF9IH-OPAAQcw3GEjrkSM&usqp=CAU" />
+                </ion-thumbnail>
+                <ion-label>Para la Florida</ion-label>
+                <ion-label>Sin acientos disponibles</ion-label>
+                <ion-button>reservar</ion-button>
+              </ion-item>
+        
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img alt="Silhouette of mountains" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsY2xP6c_Xidm9ywd9mAIj9dN-oCT76gdpsZY-BU8Wlst9yRBiy9E717qC7wocFnvda4E&usqp=CAU" />
+                </ion-thumbnail>
+                <ion-label>Para Pirque</ion-label>
+                <ion-label>5 acientos disponibles</ion-label>
+                <ion-button>reservar</ion-button>
+              </ion-item>
+        
+              <ion-item lines="none">
+                <ion-thumbnail slot="start">
+                  <img alt="Silhouette of mountains" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRR3GV_zhIf0zL5_-2FKh_mPAGpMy9D0Fw9bhAxxKkI0_NT1ryGyRlhF5rA15dqzs4BEs&usqp=CAU" />
+                </ion-thumbnail>
+                <ion-label>Para El cajon del maipo</ion-label>
+                <ion-label>5 acientos disponibles</ion-label>
+                <ion-button>reservar</ion-button>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+
+        
       </ion-col>
 
       <ion-col size="2"></ion-col>
@@ -21,5 +71,21 @@
     </ion-row>
 
   </ion-grid>
+
+ <!-- barra de navegación -->
+ <ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button (click)="home()" tab="Home">
+      <ion-icon name="planet-sharp"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button (click)="admin()" tab="administrar" >
+      <ion-icon name="id-card-sharp"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button (click)="user()" tab="perfil">
+      <ion-icon name="person-circle-sharp"></ion-icon>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>
 
 </ion-content>
