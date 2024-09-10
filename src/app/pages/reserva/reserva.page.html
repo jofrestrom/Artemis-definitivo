@@ -57,7 +57,7 @@
                 </ion-thumbnail>
                 <ion-label>Para El cajon del maipo</ion-label>
                 <ion-label>5 acientos disponibles</ion-label>
-                
+
               </ion-item>
             </ion-list>
         
@@ -73,16 +73,30 @@
     <ion-row>
       <ion-col size="1"></ion-col>
       <ion-col size="10">
+        <ion-card>
       <ion-text>
         <p>Porfavor escoja destino</p>
+        <ion-select label="Viaje" labelPlacement="stacked" cancelText="NO NO!">
+          <ion-select-option>Casas viejas</ion-select-option>
+          <ion-select-option>la florida</ion-select-option>
+          <ion-select-option>Pirque</ion-select-option>
+          <ion-select-option>Cajón del maipo</ion-select-option>
+        </ion-select>
+        <ion-button>reservar</ion-button>
         
       </ion-text>
+    </ion-card>
       </ion-col>
       <ion-col size="1"></ion-col>
     </ion-row>
 
 
+
   </ion-grid>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
  <!-- barra de navegación -->
  <ion-tabs>
   <ion-tab-bar slot="bottom">
@@ -98,5 +112,5 @@
 
   </ion-tab-bar>
 </ion-tabs>
-
-</ion-content>
+</ion-toolbar>
+</ion-footer>
