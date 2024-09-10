@@ -9,17 +9,39 @@
 
     <ion-row>
 
+      
       <ion-col size="2"></ion-col>
 
+
       <ion-col size="8">
-        <ion-img src="https://www2.udec.cl/~joseparra/2.png"
-        alt="Proximamente"></ion-img>
+        <ion-text color="primary">
+          <h1>Administración</h1>
+        </ion-text>
       </ion-col>
+
+
 
       <ion-col size="2"></ion-col>
 
     </ion-row>
 
   </ion-grid>
+
+
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="reserva()" tab="reservas">
+        <ion-icon name="car-sport-sharp"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="home()" tab="Home" >
+        <ion-icon name="planet-sharp"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="user()" tab="perfil">
+        <ion-icon name="person-circle-sharp"></ion-icon>
+      </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
 
 </ion-content>
