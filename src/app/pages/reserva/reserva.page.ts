@@ -19,6 +19,9 @@ export class ReservaPage implements OnInit {
   home(){
     this.route.navigate(['/home']);
   }
+   exit(){
+      this.route.navigate(['/login']);
+    }
 
 
   ngOnInit() {

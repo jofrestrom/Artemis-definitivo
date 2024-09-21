@@ -19,5 +19,8 @@ titulo: string ="Artemis Home";
     reserva(){
       this.route.navigate(['/reserva']);
     }
+    exit(){
+      this.route.navigate(['/login']);
+    }
 
 }

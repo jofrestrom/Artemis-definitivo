@@ -1,8 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title slot="start">
+    <ion-title>
       {{titulo}}
     </ion-title>
+    <ion-button slot="start" fill="clear" (click)="exit()">
+      <ion-icon name="exit-outline"></ion-icon>
+    </ion-button>
     <ion-searchbar slot="end" animated="true"></ion-searchbar>
   </ion-toolbar>
 </ion-header>

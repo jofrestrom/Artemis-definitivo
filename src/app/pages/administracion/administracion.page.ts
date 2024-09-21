@@ -23,5 +23,8 @@ export class AdministracionPage implements OnInit {
   reserva(){
     this.route.navigate(['/reserva']);
   }
+   exit(){
+      this.route.navigate(['/login']);
+    }
 
 }
