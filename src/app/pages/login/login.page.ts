@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  email: string = "";
+  password: string = "";
+
+  constructor(private router: Router) { }
+
+  login(){
+    if(this.email=="admin@duocuc.cl" && this.password=="admin123"){
+      this.router.navigate(['/home']);
+    }else{
+      alert("CORREO O CONTRASEÑA INCORRECTOS!");
+    }
+  }
 
   ngOnInit() {
   }
+  registro(){
+    this.router.navigate(['/register']);
+  }
+
 
 }

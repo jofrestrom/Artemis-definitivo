@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <!-- base proyecto -->
-<ion-content>
+<ion-content id="conten">
   <ion-grid>
 
     <ion-row>
@@ -20,6 +20,27 @@
         <ion-text color="primary">
           <h1>Administración</h1>
         </ion-text>
+        <ion-card>
+          <form>
+  
+            <ion-input type="text" labelPlacement="stacked" label="RUT"></ion-input>
+            <ion-input type="text" labelPlacement="stacked" label="Nombre"></ion-input>
+            <ion-input type="gmail"  labelPlacement="stacked"  label="correo"></ion-input>
+            <ion-input type="password"  labelPlacement="stacked"  label="Contraseña"></ion-input>
+            <ion-input type="date" labelPlacement="stacked" label="Fecha nacimiento"></ion-input>
+            <ion-select label="Género" labelPlacement="stacked" cancelText="NO NO!">
+              <ion-select-option>Masculino</ion-select-option>
+              <ion-select-option>Femenino</ion-select-option>
+              <ion-select-option>Otro</ion-select-option>
+            </ion-select>
+            <br>
+            <ion-button fill="clear">REGISTRAR</ion-button>
+            <ion-button fill="clear">modificar</ion-button>
+            <ion-button fill="clear">eliminar</ion-button>
+           
+          
+          </form>
+        </ion-card>
       </ion-col>
 
 
