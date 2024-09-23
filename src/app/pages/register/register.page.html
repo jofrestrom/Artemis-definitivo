@@ -1,13 +1,58 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">register</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+
+  <ion-grid>
+    
+    <ion-row>
+
+      <ion-col size="1"></ion-col>
+      <!-- ----------------------------------------------- -->
+      <ion-col size="10">
+        <ion-card>
+        <form>
+
+          <ion-input type="text" labelPlacement="floating" label="RUT"></ion-input>
+          <br>  
+          <ion-input type="text" labelPlacement="floating" label="Nombre"></ion-input>
+          <br>
+          <ion-input [(ngModel)]="correo" name="email" type="gmail" labelPlacement="floating" label="correo"></ion-input>
+          <p>{{mensajecorreo}}</p>
+          <br>
+          <ion-input [(ngModel)]="contrasena" name="contra" type="password" labelPlacement="floating" label="Contraseña"></ion-input>
+          <p>{{mensaje}}</p>
+          <br>
+          <ion-input [(ngModel)]="confirmar" name="contra2" type="password" labelPlacement="floating" label="repetir contraseña"></ion-input>
+          <p>{{mensaje}}</p>
+          <br>
+          <ion-input type="date" labelPlacement="floating" label="Fecha nacimiento"></ion-input>
+          <br>
+          <ion-select label="Género" labelPlacement="floating" cancelText="NO NO!">
+            <ion-select-option>Masculino</ion-select-option>
+            <ion-select-option>Femenino</ion-select-option>
+            <ion-select-option>Otro</ion-select-option>
+          </ion-select>
+          <br>
+          <ion-button fill="clear">REGISTRAR</ion-button>
+         
+        
+        </form>
+      </ion-card>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+
+    </ion-row>
+    <ion-row></ion-row>
+
+
+  </ion-grid>
+<ion-footer></ion-footer>
+
 </ion-content>
