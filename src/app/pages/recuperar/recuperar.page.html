@@ -1,10 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>recuperar</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+<ion-grid>
 
-  
+ <ion-col size="2"></ion-col>
+ <ion-col size="8">
+  <br>
+  <br>
+  <br>
+  <br>
+  <ion-card><H1>¿Quieres recuperar tu contraseña?</H1>
+  <br>
+  <p>Por favor introduce tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
+    <ion-input name="email" type="gmail" lablebPlacement="floating" label="correo"></ion-input>
+<ion-button fill="outline" color="primary">INGRESAR</ion-button>
+</ion-card>
+
+</ion-col>
+ <ion-col size="2"></ion-col>
+
+
+
+</ion-grid>
+
+
+<ion-footer></ion-footer>
 </ion-content>
