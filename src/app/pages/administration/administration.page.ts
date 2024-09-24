@@ -5,10 +5,10 @@ import { UsuarioService } from 'src/app/services/usuario-service.service';
 
 @Component({
   selector: 'app-administrar',
-  templateUrl: '.administracion.page.html',
+  templateUrl: './administration.page.html',
   styleUrls: ['./administration.page.scss'],
 })
-export class AdministracionPage  implements OnInit {
+export class AdministrationPage  implements OnInit {
   persona = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]{3,15}")]),
     apellido: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z]{3,15}")]),

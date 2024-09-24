@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'administracion',
-    loadChildren: () => import('./pages/administracion/administracion.module').then( m => m.AdministracionPageModule)
+    loadChildren: () => import('./pages/administration/administration.module').then( m => m.AdministrationPageModule)
   },
   {
     path: 'reserva',
