@@ -17,32 +17,37 @@
       <!-- ----------------------------------------------- -->
       <ion-col size="10">
         <ion-card>
-        <form>
-
-          <ion-input type="text" labelPlacement="floating" label="RUT"></ion-input>
+        <form [formGroup]="persona" (ngSubmit)="registrar()">
+          <p>{{persona.value | json}}</p>
+          <ion-input type="text" labelPlacement="floating" label="RUT" formControlName="rut"></ion-input>
           <br>  
-          <ion-input type="text" labelPlacement="floating" label="Nombre"></ion-input>
+          <ion-input type="text" labelPlacement="floating" label="Nombre" formControlName="nombre"></ion-input>
           <br>
-          <ion-input [(ngModel)]="correo" name="email" type="gmail" labelPlacement="floating" label="correo"></ion-input>
-          <p>{{mensajecorreo}}</p>
+          <ion-input id="correo" formControlName="correo" name="email" type="gmail" labelPlacement="floating" label="correo"></ion-input>
           <br>
-          <ion-input [(ngModel)]="contrasena" name="contra" type="password" labelPlacement="floating" label="Contraseña"></ion-input>
-          <p>{{mensaje}}</p>
+          <ion-input id="password" formControlName="password" type="password" label="CONTRASEÑA" labelPlacement="floating"></ion-input>
           <br>
-          <ion-input [(ngModel)]="confirmar" name="contra2" type="password" labelPlacement="floating" label="repetir contraseña"></ion-input>
-          <p>{{mensaje}}</p>
+          <ion-input id="confirmpassword" formControlName="confirmpassword" type="password" label="CONFIRME CONTRASEÑA" labelPlacement="floating"></ion-input>
           <br>
-          <ion-input type="date" labelPlacement="floating" label="Fecha nacimiento"></ion-input>
+          <ion-input formControlName="fecha" type="date" labelPlacement="floating" label="Fecha nacimiento"></ion-input>
           <br>
-          <ion-select label="Género" labelPlacement="floating" cancelText="NO NO!">
-            <ion-select-option>Masculino</ion-select-option>
-            <ion-select-option>Femenino</ion-select-option>
-            <ion-select-option>Otro</ion-select-option>
+          <ion-select formControlName="genero" label="Género" labelPlacement="floating" cancelText="NO NO!">
+            <ion-select-option value="Masculino">Masculino</ion-select-option>
+            <ion-select-option value="Femenino">Femenino</ion-select-option>
+            <ion-select-option value="Otro">Otro</ion-select-option>
           </ion-select>
           <br>
-          <ion-button fill="clear">REGISTRAR</ion-button>
-         
-        
+          <ion-label>TIENE AUTITO?</ion-label>
+          <ion-select formControlName="tiene_Auto" (ionChange)="onOpcionChange($event.detail.value)">
+            <ion-select-option value="SI">Sí</ion-select-option>
+            <ion-select-option value="NO">No</ion-select-option>
+          </ion-select>
+          <div *ngIf="mostrarInput">
+            <ion-input formControlName="marca" label="MARCA VEICULO" type="text" labelPlacement="floating"></ion-input>
+            <br>
+            <ion-input formControlName="patente" label="PATENTE VEICULO" type="text" labelPlacement="floating"></ion-input>
+          </div>
+          <ion-button color="primary" expand="block" fill="outline">registrar</ion-button>
         </form>
       </ion-card>
       </ion-col>

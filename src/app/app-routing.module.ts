@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'administracion',
-    loadChildren: () => import('./pages/administracion/administracion.module').then( m => m.AdministracionPageModule)
+    loadChildren: () => import('./pages/administration/administration.module').then( m => m.AdministrationPageModule)
   },
   {
     path: 'reserva',
@@ -39,11 +39,11 @@ const routes: Routes = [
     path: 'e404',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
   },
-  {
-    path: '**',
-    redirectTo: 'e404',
-    pathMatch: 'full'
-  },
+  //{
+  //  path: '**',
+  //  redirectTo: 'e404',
+  //  pathMatch: 'full'
+  //},
 
 
 ];
