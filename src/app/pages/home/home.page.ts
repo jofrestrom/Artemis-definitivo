@@ -11,7 +11,7 @@ titulo: string ="Artemis Home";
 
   constructor(private route: Router) {}
     admin(){
-      this.route.navigate(['/administracion']);
+      this.route.navigate(['/administration']);
     }
     user(){
       this.route.navigate(['/user']);

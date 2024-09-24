@@ -8,23 +8,23 @@ export class UsuarioService {
   private usuarioAutenticado: any = null;
   constructor() { }
 
-  public createUsuario(usuario: any): boolean {
-    if (this.getUsuario(usuario.rut) === undefined) {
-      this.usuarios.push(usuario);
+  public crearPersona(personita: any): boolean {
+    if (this.getPersona(personita.rut) === undefined) {
+      this.usuarios.push(personita);
       return true;
     }
     return false;
   }
 
-  public getUsuario(rut: string) {
+  public getPersona(rut: string) {
     return this.usuarios.find(elemento => elemento.rut === rut);
   }
 
-  public getUsuarios(): any[] {
+  public getPersonas(): any[] {
     return this.usuarios;
   }
 
-  public updateUsuario(rut: string, nuevoUsuario: any) {
+  public ActualizarPersona(rut: string, nuevoUsuario: any) {
     const indice = this.usuarios.findIndex(elemento => elemento.rut === rut);
     if (indice === -1) {
       return false;
@@ -33,7 +33,7 @@ export class UsuarioService {
     return true;
   }
 
-  public deleteUsuario(rut: string): boolean {
+  public EliminarPersona(rut: string): boolean {
     const indice = this.usuarios.findIndex(elemento => elemento.rut === rut);
     if (indice === -1) {
       return false;
@@ -42,7 +42,7 @@ export class UsuarioService {
     return true;
   }
 
-  public authenticate(email: string, password: string): boolean {
+  public Validacion(email: string, password: string): boolean {
     console.log('Verificando:', email, password);
     const usuario = this.usuarios.find(user => user.correo === email && user.password === password);
     if (usuario) {
@@ -52,7 +52,7 @@ export class UsuarioService {
     return false;
   }
 
-  public getUsuarioAutenticado() {
+  public getPersonaValida() {
     return this.usuarioAutenticado;
   }
 
