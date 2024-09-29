@@ -93,7 +93,4 @@ export class AdministrationPage  implements OnInit {
     });
     await alert.present();
   }
-  home(){
-    this.router.navigate(['/home']);
-  }
 }

@@ -13,15 +13,6 @@ export class UserPage implements OnInit {
   ngOnInit() {
   }
 
-  home(){
-    this.route.navigate(['/home']);
-  }
-  admin(){
-    this.route.navigate(['/administracion']);
-  }
-  reserva(){
-    this.route.navigate(['/reserva']);
-  }
   exit(){
     this.route.navigate(['/login']);
   }

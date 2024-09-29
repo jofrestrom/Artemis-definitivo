@@ -7,20 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-titulo: string ="Artemis Home";
+  titulo: string ="Artemis Home";
 
   constructor(private route: Router) {}
-    admin(){
-      this.route.navigate(['/administracion']);
-    }
-    user(){
-      this.route.navigate(['/user']);
-    }
-    reserva(){
-      this.route.navigate(['/reserva']);
-    }
-    exit(){
-      this.route.navigate(['/login']);
-    }
+
+  ngOnInit() {
+  }
+    
+  exit(){
+    this.route.navigate(['/login']);
+  }
 
 }

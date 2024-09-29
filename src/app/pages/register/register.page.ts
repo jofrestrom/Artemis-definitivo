@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, FormBuilder, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { UsuarioService } from 'src/app/services/usuario-service.service';
+
 
 
 @Component({
@@ -17,7 +20,7 @@ export class RegisterPage implements OnInit {
 
   miFormulario: FormGroup;
   mostrarInput: boolean = false;
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(private alertController: AlertController,private usuarioService: UsuarioService,private router: Router, private fb: FormBuilder) {
     this.miFormulario = this.fb.group({
       opcion: [''],
       inputExtra: ['']
@@ -38,9 +41,14 @@ export class RegisterPage implements OnInit {
     genero: new FormControl(Validators.required),
     tipo_user: new FormControl(Validators.required),
     tiene_Auto: new FormControl(Validators.required),
-    marca: new FormControl(),
-    patente: new FormControl(),
+    marca: new FormControl(Validators.required),
+    patente: new FormControl(Validators.required),
+    cantidad_asientos: new FormControl(Validators.required)
   });
+
+  Personas: any[] = [];
+
+  predeterminado = "Usuario";
 
   passwordMatchValidator(formGroup: AbstractControl): ValidationErrors | null {
     const password = formGroup.get('password')?.value;
@@ -49,6 +57,19 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  async registrar() {
+    if (this.usuarioService.crearPersona(this.persona.value)) {
+      await this.presentAlert('Perfecto', 'Registrado correctamente');
+      this.usuarioService.get_tipo(this.predeterminado);
+      console.log(this.persona.value)
+      this.persona.reset();
+      this.Personas = this.usuarioService.getPersonas();
+      this.router.navigate(['/login']);
+    } else {
+      await this.presentAlert('Error', 'El usuario no se pudo registrar');
+    }
   }
 
   validad_edad(minAge: number, maxAge: number): ValidatorFn {
@@ -66,14 +87,13 @@ export class RegisterPage implements OnInit {
     };
   }
 
-  public registrar():void{
-    if(this.persona.value){
-      console.log(this.persona.value);
-      alert("Registrado con exito");
-      this.router.navigate(['/login']);  
-      alert('el correo es incorrecto');
-      this.mensajecorreo = 'el correo es invalido'
-    }
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['Entendido'],
+    });
+    await alert.present();
   }
 
 }
