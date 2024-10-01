@@ -4,7 +4,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UsuarioService {
-  usuarios: any[] = [];
+  usuarios: any[] = [
+    {
+      rut: '12345678-k',
+      nombre: 'admin',
+      correo: 'admin@duocuc.cl',
+      password: 'admin123',
+      confirmpassword: 'admin123',
+      fecha: '2003-01-01',
+      genero: 'Otro',
+      tipo_user: 'Administrador',
+      tiene_Auto: 'No',
+      marca: '',
+      patente: ''
+    }
+  ];
+
+  private tipo: string = "";
+  
   private usuarioAutenticado: any = null;
   constructor() { }
 
@@ -14,6 +31,14 @@ export class UsuarioService {
       return true;
     }
     return false;
+  }
+
+  public getCorreo(correo2: string){
+    return this.usuarios.find(elemento => elemento.correo === correo2);
+  }
+
+  public getPassword(password2: string){
+    return this.usuarios.find(elemento => elemento.password === password2);
   }
 
   public getPersona(rut: string) {
@@ -59,4 +84,13 @@ export class UsuarioService {
   public logUsuarios() {
     console.log(this.usuarios);
   }
+
+  public validarpassword(contra: string, confirmar: string){
+    const Contra2 = this.usuarios.find(Cont => Cont.password === contra && Cont.confirmpassword === confirmar);
+  }
+
+  public getTipo(tipo: string){
+    return this.usuarios.find(elemento => elemento.tipo_user)
+  }
+
 }

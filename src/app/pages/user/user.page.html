@@ -1,9 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>user</ion-title>
-    <ion-button slot="start" fill="clear" (click)="exit()">
-      <ion-icon name="exit-outline"></ion-icon>
-    </ion-button>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -37,25 +35,4 @@
   </ion-grid>
 
 
- 
-
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button (click)="reserva()" tab="reservas">
-          <ion-icon name="car-sport-sharp"></ion-icon>
-        </ion-tab-button>
-        <ion-tab-button (click)="admin()" tab="administrar" >
-          <ion-icon name="id-card-sharp"></ion-icon>
-        </ion-tab-button>
-        <ion-tab-button (click)="home()" tab="Home">
-          <ion-icon name="planet-sharp"></ion-icon>
-        </ion-tab-button>
-  
-      </ion-tab-bar>
-    </ion-tabs>
-  </ion-toolbar>
-</ion-footer>

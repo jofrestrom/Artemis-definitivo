@@ -1,9 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>register</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +15,6 @@
       <ion-col size="10">
         <ion-card>
         <form [formGroup]="persona" (ngSubmit)="registrar()">
-          <p>{{persona.value | json}}</p>
           <ion-input type="text" labelPlacement="floating" label="RUT" formControlName="rut"></ion-input>
           <br>  
           <ion-input type="text" labelPlacement="floating" label="Nombre" formControlName="nombre"></ion-input>
@@ -37,6 +33,10 @@
             <ion-select-option value="Otro">Otro</ion-select-option>
           </ion-select>
           <br>
+          <ion-select formControlName="tipo_user" label="ES PROFESOR" labelPlacement="floating">
+            <ion-select-option value="Profesor">Soy profesor</ion-select-option>
+          </ion-select>
+          <br>
           <ion-label>TIENE AUTITO?</ion-label>
           <ion-select formControlName="tiene_Auto" (ionChange)="onOpcionChange($event.detail.value)">
             <ion-select-option value="SI">Sí</ion-select-option>
@@ -47,7 +47,7 @@
             <br>
             <ion-input formControlName="patente" label="PATENTE VEICULO" type="text" labelPlacement="floating"></ion-input>
           </div>
-          <ion-button color="primary" expand="block" fill="outline">registrar</ion-button>
+          <ion-button [disabled]="persona.invalid" type="submit" color="primary" expand="block" fill="outline">registrar</ion-button>
         </form>
       </ion-card>
       </ion-col>
