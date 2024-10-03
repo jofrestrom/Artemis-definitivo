@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-  usuarios: any[] = [
-    {
+  
+
+  constructor(private storage: Storage){
+    this.init();
+  }
+
+  async init(){
+    await this.storage.create();
+    let admin = {
       rut: '12345678-k',
       nombre: 'admin',
       correo: 'admin@duocuc.cl',
@@ -18,79 +26,84 @@ export class UsuarioService {
       marca: '',
       patente: ''
     }
-  ];
+    await this.crearPersona(admin);
+  }
 
   private tipo: string = "";
   
   private usuarioAutenticado: any = null;
-  constructor() { }
 
-  public crearPersona(personita: any): boolean {
-    if (this.getPersona(personita.rut) === undefined) {
-      this.usuarios.push(personita);
-      return true;
-    }
-    return false;
-  }
-
-  public getCorreo(correo2: string){
-    return this.usuarios.find(elemento => elemento.correo === correo2);
-  }
-
-  public getPassword(password2: string){
-    return this.usuarios.find(elemento => elemento.password === password2);
-  }
-
-  public getPersona(rut: string) {
-    return this.usuarios.find(elemento => elemento.rut === rut);
-  }
-
-  public getPersonas(): any[] {
-    return this.usuarios;
-  }
-
-  public ActualizarPersona(rut: string, nuevoUsuario: any) {
-    const indice = this.usuarios.findIndex(elemento => elemento.rut === rut);
-    if (indice === -1) {
+  public async crearPersona(usuario: any): Promise<boolean> {
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
+    if (usuarios.find(user => user.rut == usuario.rut) != undefined) {
       return false;
     }
-    this.usuarios[indice] = nuevoUsuario;
+    usuarios.push(usuario);
+    await this.storage.set("Usuarios", usuarios);
     return true;
   }
 
-  public EliminarPersona(rut: string): boolean {
-    const indice = this.usuarios.findIndex(elemento => elemento.rut === rut);
+  public async getPersona(rut: string): Promise<any[]> {
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
+    return usuarios.find(usi => usi.rut === rut);
+  }
+
+  public async getPersonas(): Promise<any[]> {
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
+    return usuarios;
+  }
+
+  public async ActualizarPersona(rut: string, nuevoUsuario: any) {
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
+    let indice = usuarios.findIndex(elemento => elemento.rut === rut);
+    
     if (indice === -1) {
       return false;
     }
-    this.usuarios.splice(indice, 1);
+    usuarios[indice] = nuevoUsuario;
+    await this.storage.set("Usuarios", usuarios);
+    return true;
+  }
+  
+  public async EliminarPersona(rut: string): Promise<boolean>{
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
+    let indice = usuarios.findIndex(elemento => elemento.rut === rut);
+    if (indice === -1) {
+      return false;
+    }
+    usuarios.splice(indice, 1);
+    await this.storage.set("Usuarios", usuarios);
     return true;
   }
 
-  public Validacion(email: string, password: string): boolean {
+  public async Validacion(email: string, password: string): Promise<boolean> {
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
     console.log('Verificando:', email, password);
-    const usuario = this.usuarios.find(user => user.correo === email && user.password === password);
+    const usuario = usuarios.find(user => user.correo === email && user.password === password);
     if (usuario) {
       this.usuarioAutenticado = usuario;
       return true;
     }
     return false;
   }
-
   public getPersonaValida() {
     return this.usuarioAutenticado;
   }
 
-  public logUsuarios() {
-    console.log(this.usuarios);
+  public async logUsuarios() {
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
+    console.log(usuarios);
   }
 
-  public validarpassword(contra: string, confirmar: string){
-    const Contra2 = this.usuarios.find(Cont => Cont.password === contra && Cont.confirmpassword === confirmar);
+  public async validarpassword(contra: string, confirmar: string){
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
+    const Contra2 = usuarios.find(Cont => Cont.password === contra && Cont.confirmpassword === confirmar);
+    return Contra2;
   }
 
-  public getTipo(tipo: string){
-    return this.usuarios.find(elemento => elemento.tipo_user)
+  public async recuperar(correo:string){
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
+    return usuarios.find(elemento=> elemento.correo == correo);
   }
 
 }

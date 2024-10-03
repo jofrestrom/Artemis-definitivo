@@ -13,8 +13,8 @@ export class UserPage implements OnInit {
 
   constructor(private route: Router,private usuarioService: UsuarioService) { }
 
-  ngOnInit() {
-    this.Personas = this.usuarioService.getPersonas();
+  async ngOnInit() {
+    this.Personas = await this.usuarioService.getPersonas();
   }
 
   exit(){

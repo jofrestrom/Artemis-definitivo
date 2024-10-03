@@ -17,16 +17,16 @@ export class LoginPage implements OnInit {
   
   Personas: any[] = [];
 
-  login(){
-    if(this.usuarioService.getCorreo(this.email) && this.usuarioService.getPassword(this.password)){
+  async login(){
+    if(await this.usuarioService.Validacion(this.email, this.password)){
       this.router.navigate(['/home']);
     }else{
       alert("CORREO O CONTRASEÑA INCORRECTOS!");
     }
   }
 
-  ngOnInit() {
-    this.Personas = this.usuarioService.getPersonas();
+  async ngOnInit() {
+    this.Personas = await this.usuarioService.getPersonas();
 
   }
   registro(){

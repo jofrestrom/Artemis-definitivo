@@ -69,6 +69,9 @@
               <ion-button [disabled]="persona.invalid" type="submit" size="block" color="medium">REGISTRAR</ion-button>
 
               <ion-button type="reset" size="block" color="dark">Limpiar</ion-button>
+              
+              <ion-button [disabled]="persona.invalid" (click)="modificar()" type="submit" size="block"
+                color="danger">Modificar</ion-button>
             </form>
           </ion-card-content>
         </ion-card>
@@ -98,8 +101,7 @@
                   </ion-item-option>
                 </ion-item-options>
               </ion-item-sliding>
-              <ion-button [disabled]="persona.invalid" (click)="modificar()" type="submit" size="block"
-                color="danger">Modificar</ion-button>
+              
             </ion-list>
           </ion-card-content>
         </ion-card>

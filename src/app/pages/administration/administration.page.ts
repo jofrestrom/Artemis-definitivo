@@ -33,20 +33,21 @@ export class AdministrationPage  implements OnInit {
       opcion: [''],
       inputExtra: ['']
     });
+    
   }
   onOpcionChange(opcion: string) {
     this.mostrarInput = opcion === 'SI';
   }
 
-  ngOnInit() {
-    this.Personas = this.usuarioService.getPersonas();
+  async ngOnInit() {
+    this.Personas = await this.usuarioService.getPersonas();
   }
 
   async registrar() {
-    if (this.usuarioService.crearPersona(this.persona.value)) {
+    if ( await this.usuarioService.crearPersona(this.persona.value)) {
       await this.presentAlert('Perfecto', 'Registrado correctamente');
       this.persona.reset();
-      this.Personas = this.usuarioService.getPersonas();
+      await this.usuarioService.getPersonas();
     } else {
       await this.presentAlert('Error', 'El usuario no se pudo registrar');
     }
@@ -56,16 +57,17 @@ export class AdministrationPage  implements OnInit {
     this.persona.patchValue(usuario);
   }
 
-  eliminar(rut: string) {
-    if (this.usuarioService.EliminarPersona(rut)) {
-      this.Personas = this.usuarioService.getPersonas();
+  async eliminar(rut: string) {
+    if (await this.usuarioService.EliminarPersona(rut)) {
+      this.Personas = await this.usuarioService.getPersonas();
     }
   }
 
-  modificar() {
+  async modificar() {
     var rut_modificar = this.persona.controls.rut.value || "";
-    if (this.usuarioService.ActualizarPersona(rut_modificar, this.persona.value)) {
+    if (await this.usuarioService.ActualizarPersona(rut_modificar, this.persona.value)) {
       this.presentAlert('Perfecto!', 'Modificado correctamente');
+      this.Personas = await this.usuarioService.getPersonas();
     } else {
       this.presentAlert('Error!', 'No se pudo modificar');
     }

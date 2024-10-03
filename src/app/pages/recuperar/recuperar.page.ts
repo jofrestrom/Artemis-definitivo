@@ -14,7 +14,7 @@ export class RecuperarPage implements OnInit {
   constructor(private router: Router,private usuarioService: UsuarioService, private alertController: AlertController) { }
 
   async ENVIAR(){
-    if(this.usuarioService.getCorreo(this.email)){
+    if( await this.usuarioService.recuperar(this.email)){
       await this.presentAlert('Perfecto', 'se envio un correo');
     }else{
       await this.presentAlert("MAAAAL!!","NO SE ENCONTRO EL CORREO");

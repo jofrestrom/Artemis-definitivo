@@ -31,7 +31,7 @@ export class HomePage {
     this.route.navigate(['/login']);
   }
 
-  ngOnInit() {
-    this.Personas = this.usuarioService.getPersonas();
+  async ngOnInit() {
+    this.Personas = await this.usuarioService.getPersonas();
   }
 }

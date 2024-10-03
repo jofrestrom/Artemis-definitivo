@@ -47,9 +47,14 @@ export class RegisterPage implements OnInit {
     tiene_Auto: new FormControl(Validators.required),
     marca: new FormControl(),
     patente: new FormControl(),
+    cantidad_asientos: new FormControl(),
   });
 
   ngOnInit() {
+  }
+
+  async validadContra(){
+
   }
 
   validad_edad(minAge: number, maxAge: number): ValidatorFn {
@@ -70,12 +75,17 @@ export class RegisterPage implements OnInit {
   async registrar() {
     
     if(this.persona.controls.password.value != this.persona.controls.confirmpassword.value){
+      alert("las contraseñas no coinciden")
+      return;
+    }
+
+    if(this.persona.controls.password.value != this.persona.controls.confirmpassword.value){
       await this.presentAlert('Problema', 'las contraseñas no coinsiden');
-    }else if (this.usuarioService.crearPersona(this.persona.value)){
+    }else if ( await this.usuarioService.crearPersona(this.persona.value)){
       await this.presentAlert('Perfecto', 'Registrado correctamente');
       console.log(this.persona.value)
       this.persona.reset();
-      this.Personas = this.usuarioService.getPersonas();
+      await this.usuarioService.getPersonas();
       this.router.navigate(['/login']);  
     } else {
       await this.presentAlert('Error', 'El usuario no se pudo registrar');
