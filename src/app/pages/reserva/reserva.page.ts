@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Attribute, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-reserva',
@@ -9,6 +10,9 @@ import { Router } from '@angular/router';
 export class ReservaPage implements OnInit {
 
   constructor(private route: Router ) { }
+
+
+  
 
   admin(){
     this.route.navigate(['/administracion']);
