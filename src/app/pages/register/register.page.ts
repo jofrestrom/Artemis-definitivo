@@ -53,10 +53,6 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
-  async validadContra(){
-
-  }
-
   validad_edad(minAge: number, maxAge: number): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const fecha = new Date(control.value);

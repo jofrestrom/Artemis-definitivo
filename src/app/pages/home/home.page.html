@@ -3,9 +3,6 @@
     <ion-title>
       {{titulo}}
     </ion-title>
-    <ion-button slot="start" fill="clear" (click)="exit()">
-      <ion-icon name="exit-outline"></ion-icon>
-    </ion-button>
     <ion-searchbar slot="end" animated="true"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -81,7 +78,7 @@
       <ion-tab-button  tab="reserva">
         <ion-icon name="car-sport-sharp"></ion-icon>
       </ion-tab-button>
-      <ion-tab-button  tab="administration" *ngIf="onOpcionChange">
+      <ion-tab-button  tab="administration" *ngIf = "usuario.tipo_user == 'administrador'">
         <ion-icon name="id-card-sharp"></ion-icon>
       </ion-tab-button>
       <ion-tab-button  tab="user">

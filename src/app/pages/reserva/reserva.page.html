@@ -1,8 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>reserva</ion-title>
-
-  </ion-toolbar>
+    <ion-button slot="end" *ngIf = "usuario.tiene_Auto == 'SI'" (click)="crearViaje()">Crear viaje </ion-button>
+  </ion-toolbar>  
 </ion-header>
 
 <ion-content>
@@ -34,6 +34,9 @@
             </ion-thumbnail>
             <ion-label>Para casas viejas</ion-label>
             <ion-label>3 acientos disponibles</ion-label>
+            <ion-radio-group value="reservar">
+              <ion-radio value="casas_viejas">reservar</ion-radio>
+            </ion-radio-group>
           </ion-item>
 
           <ion-item>
@@ -44,7 +47,15 @@
             <ion-label>Para la Florida</ion-label>
             <ion-label>0 acientos disponibles</ion-label>
             <ion-label>RESERVAR</ion-label>
+            <ion-select (ionChange)="onOpcionChange($event.detail.value)">
+              <br>
+              <ion-select-option value="Florida">Si</ion-select-option>
+              <ion-select-option value="No">No</ion-select-option>
+            </ion-select>
           </ion-item>
+          <div *ngIf="mostrarInput">
+            <p>MAPA</p>
+          </div>
 
           <ion-item>
             <ion-thumbnail slot="start">
@@ -53,7 +64,16 @@
             </ion-thumbnail>
             <ion-label>Para Pirque</ion-label>
             <ion-label>5 acientos disponibles</ion-label>
+            <ion-label>RESERVAR</ion-label>
+            <ion-select (ionChange)="onOpcionChange($event.detail.value)">
+              <br>
+              <ion-select-option value="Pirque">Si</ion-select-option>
+              <ion-select-option value="No">No</ion-select-option>
+            </ion-select>
           </ion-item>
+          <div *ngIf="mostrarInput">
+            <p>MAPA</p>
+          </div>
 
           <ion-item>
             <ion-thumbnail slot="start">
@@ -62,7 +82,12 @@
             </ion-thumbnail>
             <ion-label>Para El cajon del maipo</ion-label>
             <ion-label>5 acientos disponibles</ion-label>
+            <ion-radio-group value="reservar">
+              <ion-radio value="cajon">reservar</ion-radio>
+            </ion-radio-group>
           </ion-item>
+
+          
         </ion-list>
 
 
@@ -80,7 +105,7 @@
         <ion-card>
           <ion-text>
             <p>Porfavor escoja destino</p>
-            <ion-select label="Viaje" labelPlacement="stacked" cancelText="NO NO!">
+            <ion-select label="Viaje" labelPlacement="stacked" cancelText="X">
               <ion-select-option>Casas viejas</ion-select-option>
               <ion-select-option>la florida</ion-select-option>
               <ion-select-option>Pirque</ion-select-option>

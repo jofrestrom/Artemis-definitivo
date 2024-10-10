@@ -9,26 +9,27 @@ import { UsuarioService } from 'src/app/services/usuario-service.service';
 })
 export class LoginPage implements OnInit {
 
-  email: string = "";
+  correo: string = "";
   password: string = "";
 
   constructor(private router: Router,private usuarioService: UsuarioService) { }
 
+  async ngOnInit() {
+    this.Personas = await this.usuarioService.getPersonas();
+    this.Persona = await this.usuarioService.getPersona(this.correo);
+  }
   
   Personas: any[] = [];
+  Persona: any[] = [];
 
   async login(){
-    if(await this.usuarioService.Validacion(this.email, this.password)){
+    if(await this.usuarioService.Validacion(this.correo, this.password)){
       this.router.navigate(['/home']);
     }else{
       alert("CORREO O CONTRASEÑA INCORRECTOS!");
     }
   }
 
-  async ngOnInit() {
-    this.Personas = await this.usuarioService.getPersonas();
-
-  }
   registro(){
     this.router.navigate(['/register']);
   }

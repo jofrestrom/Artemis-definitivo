@@ -69,10 +69,8 @@
               <ion-button [disabled]="persona.invalid" type="submit" size="block" color="medium">REGISTRAR</ion-button>
 
               <ion-button type="reset" size="block" color="dark">Limpiar</ion-button>
-              
-              <ion-button [disabled]="persona.invalid" (click)="modificar()" type="submit" size="block"
-                color="danger">Modificar</ion-button>
             </form>
+            <ion-button [disabled]="persona.invalid" (click)="modificar()" type="submit" size="block" color="danger">Modificar</ion-button>
           </ion-card-content>
         </ion-card>
       </ion-col>

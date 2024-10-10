@@ -8,17 +8,33 @@ import { UsuarioService } from 'src/app/services/usuario-service.service';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
-  
-  Personas: any[] = [];
+  isMenuVisible = true;
+  usuario: any;
 
   constructor(private route: Router,private usuarioService: UsuarioService) { }
 
+
+  
+
+
+
   async ngOnInit() {
-    this.Personas = await this.usuarioService.getPersonas();
+    this.usuario = JSON.parse(localStorage.getItem('Usuario') || '');
+    console.log(this.usuario)
   }
 
   exit(){
+    localStorage.removeItem('usuario')
     this.route.navigate(['/login']);
+  }
+
+  toggleMenu() {
+    const menuElement = document.getElementById('menu-list');
+    
+    if (menuElement) {
+      this.isMenuVisible = !this.isMenuVisible;
+      menuElement.style.display = this.isMenuVisible ? 'block' : 'none';
+    }
   }
 
 }

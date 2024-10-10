@@ -27,11 +27,16 @@ export class UsuarioService {
       patente: ''
     }
     await this.crearPersona(admin);
+
   }
 
   private tipo: string = "";
   
   private usuarioAutenticado: any = null;
+
+  async capturarTipo(){
+    
+  }
 
   public async crearPersona(usuario: any): Promise<boolean> {
     let usuarios: any[] = await this.storage.get("Usuarios") || [];
@@ -41,6 +46,12 @@ export class UsuarioService {
     usuarios.push(usuario);
     await this.storage.set("Usuarios", usuarios);
     return true;
+  }
+
+  public async getTipo(rut: string): Promise<any[]>{
+    let usuarios: any[] = await this.storage.get("Usuarios") || [];
+    let new_user = usuarios.find(usi => usi.rut === rut);
+    return new_user.tipo_user;  
   }
 
   public async getPersona(rut: string): Promise<any[]> {
@@ -76,12 +87,12 @@ export class UsuarioService {
     return true;
   }
 
-  public async Validacion(email: string, password: string): Promise<boolean> {
+  public async Validacion(correo: string, password: string): Promise<boolean> {
     let usuarios: any[] = await this.storage.get("Usuarios") || [];
-    console.log('Verificando:', email, password);
-    const usuario = usuarios.find(user => user.correo === email && user.password === password);
+    const usuario = usuarios.find(user => user.correo === correo && user.password === password);
     if (usuario) {
       this.usuarioAutenticado = usuario;
+      localStorage.setItem("Usuario", JSON.stringify(this.usuarioAutenticado));
       return true;
     }
     return false;
