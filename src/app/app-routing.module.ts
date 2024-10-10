@@ -15,22 +15,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
-  {
-    path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
-    path: 'administracion',
-    loadChildren: () => import('./pages/administration/administration.module').then( m => m.AdministrationPageModule)
-  },
-  {
-    path: 'reserva',
-    loadChildren: () => import('./pages/reserva/reserva.module').then( m => m.ReservaPageModule)
-  },
-  {
-    path: 'user',
-    loadChildren: () => import('./pages/user/user.module').then( m => m.UserPageModule)
-  },
+  
   {
     path: 'recuperar',
     loadChildren: () => import('./pages/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
@@ -39,11 +24,20 @@ const routes: Routes = [
     path: 'e404',
     loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
   },
-  //{
-  //  path: '**',
-  //  redirectTo: 'e404',
-  //  pathMatch: 'full'
-  //},
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'mapa',
+    loadChildren: () => import('./pages/mapa/mapa.module').then( m => m.MapaPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'e404',
+    pathMatch: 'full'
+  },
+
 
 
 ];

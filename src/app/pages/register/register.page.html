@@ -1,9 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>register</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -17,8 +14,9 @@
       <!-- ----------------------------------------------- -->
       <ion-col size="10">
         <ion-card>
-          <p>{{persona.value | json}}</p>
-          <form [formGroup]="persona" (ngSubmit)="registrar()">
+
+        <form [formGroup]="persona" (ngSubmit)="registrar()">
+
           <ion-input type="text" labelPlacement="floating" label="RUT" formControlName="rut"></ion-input>
           <br>  
           <ion-input type="text" labelPlacement="floating" label="Nombre" formControlName="nombre"></ion-input>
@@ -31,10 +29,14 @@
           <br>
           <ion-input formControlName="fecha" type="date" labelPlacement="floating" label="Fecha nacimiento"></ion-input>
           <br>
-          <ion-select formControlName="genero" label="Género" labelPlacement="floating" cancelText="NO NO!">
+          <ion-select formControlName="genero" label="Género" labelPlacement="floating" cancelText="No!">
             <ion-select-option value="Masculino">Masculino</ion-select-option>
             <ion-select-option value="Femenino">Femenino</ion-select-option>
             <ion-select-option value="Otro">Otro</ion-select-option>
+          </ion-select>
+          <br>
+          <ion-select formControlName="tipo_user" label="ES PROFESOR" labelPlacement="floating">
+            <ion-select-option value="Profesor">Soy profesor</ion-select-option>
           </ion-select>
           <br>
           <ion-label>TIENE AUTITO?</ion-label>
@@ -49,7 +51,9 @@
             <br>
             <ion-input formControlName="cantidad_asientos" label="CANTIDAD ASIENTOS" type="number" labelPlacement="floating"></ion-input>
           </div>
-          <ion-button [disabled]="persona.invalid" type="submit" color="primary" expand="block" fill="outline">REGISTRAR</ion-button>
+
+          <ion-button [disabled]="persona.invalid" type="submit" color="primary" expand="block" fill="outline">registrar</ion-button>
+
         </form>
       </ion-card>
       </ion-col>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario-service.service';
 
 @Component({
   selector: 'app-user',
@@ -7,10 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
+  
+  Personas: any[] = [];
 
-  constructor(private route: Router) { }
+  constructor(private route: Router,private usuarioService: UsuarioService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.Personas = await this.usuarioService.getPersonas();
   }
 
   exit(){
