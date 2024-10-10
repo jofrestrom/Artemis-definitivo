@@ -22,7 +22,9 @@ export class RegisterPage implements OnInit {
 
   miFormulario: FormGroup;
   mostrarInput: boolean = false;
+
   constructor(private router: Router, private fb: FormBuilder, private usuarioService: UsuarioService, private alertController: AlertController) {
+
     this.miFormulario = this.fb.group({
       opcion: [''],
       inputExtra: ['']
@@ -45,16 +47,31 @@ export class RegisterPage implements OnInit {
     genero: new FormControl(Validators.required),
     tipo_user: new FormControl('Usuario'),
     tiene_Auto: new FormControl(Validators.required),
+
     marca: new FormControl(),
     patente: new FormControl(),
     cantidad_asientos: new FormControl(),
   });
 
   ngOnInit() {
+
   }
 
   async validadContra(){
 
+  }
+
+  async registrar() {
+    if (this.usuarioService.crearPersona(this.persona.value)) {
+      await this.presentAlert('Perfecto', 'Registrado correctamente');
+      this.usuarioService.get_tipo(this.predeterminado);
+      console.log(this.persona.value)
+      this.persona.reset();
+      this.Personas = this.usuarioService.getPersonas();
+      this.router.navigate(['/login']);
+    } else {
+      await this.presentAlert('Error', 'El usuario no se pudo registrar');
+    }
   }
 
   validad_edad(minAge: number, maxAge: number): ValidatorFn {
@@ -79,6 +96,7 @@ export class RegisterPage implements OnInit {
       return;
     }
 
+
     if(this.persona.controls.password.value != this.persona.controls.confirmpassword.value){
       await this.presentAlert('Problema', 'las contraseñas no coinsiden');
     }else if ( await this.usuarioService.crearPersona(this.persona.value)){
@@ -90,6 +108,7 @@ export class RegisterPage implements OnInit {
     } else {
       await this.presentAlert('Error', 'El usuario no se pudo registrar');
     }
+
   }
 
   async presentAlert(header: string, message: string) {

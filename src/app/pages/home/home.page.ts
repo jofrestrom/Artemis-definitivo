@@ -10,8 +10,10 @@ import { UsuarioService } from 'src/app/services/usuario-service.service';
 })
 export class HomePage {
   titulo: string ="Artemis Home";
+
   miFormulario: FormGroup;
   mostrarInput: boolean = false;
+
 
 
   Personas: any[] = [];

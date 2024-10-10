@@ -14,7 +14,9 @@
       <!-- ----------------------------------------------- -->
       <ion-col size="10">
         <ion-card>
+
         <form [formGroup]="persona" (ngSubmit)="registrar()">
+
           <ion-input type="text" labelPlacement="floating" label="RUT" formControlName="rut"></ion-input>
           <br>  
           <ion-input type="text" labelPlacement="floating" label="Nombre" formControlName="nombre"></ion-input>
@@ -46,8 +48,12 @@
             <ion-input formControlName="marca" label="MARCA VEICULO" type="text" labelPlacement="floating"></ion-input>
             <br>
             <ion-input formControlName="patente" label="PATENTE VEICULO" type="text" labelPlacement="floating"></ion-input>
+            <br>
+            <ion-input formControlName="cantidad_asientos" label="CANTIDAD ASIENTOS" type="number" labelPlacement="floating"></ion-input>
           </div>
+
           <ion-button [disabled]="persona.invalid" type="submit" color="primary" expand="block" fill="outline">registrar</ion-button>
+
         </form>
       </ion-card>
       </ion-col>
