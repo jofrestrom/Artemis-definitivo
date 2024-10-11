@@ -6,7 +6,21 @@ import { ReservaPage } from './reserva.page';
 const routes: Routes = [
   {
     path: '',
-    component: ReservaPage
+    component: ReservaPage,
+    children: [
+      {
+        path: 'administration',
+        loadChildren: () => import('../administration/administration.module').then( m => m.AdministrationPageModule)
+      },
+      {
+        path: 'user',
+        loadChildren: () => import('../user/user.module').then( m => m.UserPageModule)
+      },
+      {
+        path: 'home',
+        loadChildren: () => import('../home/home.module').then( m => m.HomePageModule)
+      },
+    ]
   }
 ];
 
