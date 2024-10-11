@@ -39,6 +39,11 @@ const routes: Routes = [
     redirectTo: 'e404',
     pathMatch: 'full'
   },
+  {
+    path: 'form-viajes',
+    loadChildren: () => import('./pages/form-viajes/form-viajes.module').then( m => m.FormViajesPageModule)
+  },
+
 
 
 

@@ -26,7 +26,6 @@ export class ReservaPage implements OnInit {
   async crearViaje(){
     await this.presentAlert("", "")
   }
-
    onOpcionChange(opcion: string) {
     if(opcion === 'Pirque'){
       this.mostrarInput = opcion === 'Pirque';
